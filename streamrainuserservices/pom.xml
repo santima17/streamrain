@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.tsi2.streamrain</groupId>
-	<artifactId>streamrainuserservice</artifactId>
+	<artifactId>streamrainuserservices</artifactId>
 	<version>1.0</version>
 	<properties>
 		<!-- Version de modulos de spring -->
@@ -10,7 +10,22 @@
 	</properties>
 
 	<dependencies>
-		<!-- Modulos de spring usados por capa de servicios  -->
+
+		<!-- BUSSINES LAYER STREAMRAIN -->
+		<dependency>
+			<groupId>com.tsi2.streamrain</groupId>
+			<artifactId>streamrainuserbussines</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<!-- FACADES STREAMRAIN -->
+		<dependency>
+			<groupId>com.tsi2.streamrain</groupId>
+			<artifactId>streamrainfacades</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<!-- Modulos de spring usados por capa bussines -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>

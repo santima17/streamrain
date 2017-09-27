@@ -6,6 +6,8 @@
 package com.tsi2.streamrain.dao.implementations;
 
 import com.tsi2.streamrain.context.DBHibernateUtil;
+import com.tsi2.streamrain.dao.interfaces.IDAOService;
+
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -14,7 +16,7 @@ import org.hibernate.Session;
  *
  * @author santiago
  */
-public class StreamRainMySQLDAO{
+public class StreamRainMySQLDAO implements IDAOService{
     
 
     public <T> T save(final T o){

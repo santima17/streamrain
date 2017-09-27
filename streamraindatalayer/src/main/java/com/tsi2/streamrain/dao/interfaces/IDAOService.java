@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @author santiago
  */
-public interface IDAOService<T> {
+public interface IDAOService {
     
     public <T> T save(final T o);
     public <T> T get(final Class<T> type, final Long id);

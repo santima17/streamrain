@@ -7,6 +7,14 @@
 	<name>streamrainui Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>
+	
+		<!-- BUSSINES LAYER STREAMRAIN -->
+		<dependency>
+			<groupId>com.tsi2.streamrain</groupId>
+			<artifactId>streamrainuserservices</artifactId>
+			<version>1.0</version>
+		</dependency> 
+		
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>

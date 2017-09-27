@@ -2,46 +2,31 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.tsi2.streamrain</groupId>
-	<artifactId>streamraindatalayer</artifactId>
+	<artifactId>streamraingeneratorsbussines</artifactId>
 	<version>1.0</version>
+
 	<properties>
-		<!-- Version de modulos de hibernate -->
-		<hibernate.version>5.1.0.Final</hibernate.version>
 		<!-- Version de modulos de spring -->
 		<spring.version>4.2.3.RELEASE</spring.version>
 	</properties>
 
-	<!-- Modulos de hibernate usados por capa dao -->
 	<dependencies>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-core</artifactId>
-			<version>${hibernate.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-validator</artifactId>
-			<version>${hibernate.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.hibernate.common</groupId>
-			<artifactId>hibernate-commons-annotations</artifactId>
-			<version>5.0.1.Final</version>
-			<!-- <classifier>tests</classifier> -->
-		</dependency>
-		<dependency>
-			<groupId>org.hibernate.javax.persistence</groupId>
-			<artifactId>hibernate-jpa-2.0-api</artifactId>
-			<version>1.0.1.Final</version>
-		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-entitymanager</artifactId>
-			<version>${hibernate.version}</version>
-		</dependency>
-		<!-- Modulos de hibernate -->
 
-		<!-- Modulos de spring usados por capa dao -->
+		<!-- DATA LAYER STREAMRAIN -->
+		<dependency>
+			<groupId>com.tsi2.streamrain</groupId>
+			<artifactId>streamraindatalayer</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<!-- FACADES STREAMRAIN -->
+		<dependency>
+			<groupId>com.tsi2.streamrain</groupId>
+			<artifactId>streamrainfacades</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<!-- Modulos de spring usados por capa de servicios -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
@@ -97,4 +82,5 @@
 		</dependency>
 		<!-- Modulos de spring -->
 	</dependencies>
+
 </project>
