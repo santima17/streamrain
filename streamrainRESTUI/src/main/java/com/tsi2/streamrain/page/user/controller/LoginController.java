@@ -1,5 +1,7 @@
 package com.tsi2.streamrain.page.user.controller;
 
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,7 +14,7 @@ import com.tsi2.streamrain.services.user.interfaces.IUserService;
 @Controller
 public class LoginController {
 	
-	
+	@Resource(name="userService")
 	IUserService userService;
 	
 	private static final String USER_PREFIX = "/user/";

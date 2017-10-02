@@ -20,6 +20,7 @@ public class StreamRainMySQLDAO implements IDAOService{
     
 
     public <T> T save(final T o){
+      //Session dbSession = DBHibernateUtil.getSessionFactory().withOptions().tenantIdentifier("DI").openSession();
       Session dbSession = DBHibernateUtil.getSessionFactory().openSession();
       return (T) dbSession.save(o);
     }

@@ -5,6 +5,6 @@
 
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<bean id="userBussines" class="com.tsi2.streamrain.bussines.user.implementations.DAOUserServiceImpl" />
+	<bean id="userBussines" class="com.tsi2.streamrain.bussines.user.implementations.DAOUserBussinesImpl" />
 
 </beans>
