@@ -20,21 +20,32 @@ import org.hibernate.cfg.Configuration;
  */
 public class DBHibernateUtil {
 
-    private static final SessionFactory sessionFactory;
+    private static final SessionFactory sessionFactoryGenerator;
+    private static final SessionFactory sessionFactoryMain;
     
     static {
         try {
-            // Create the SessionFactory from standard (hibernate.cfg.xml) 
-            // config file.
-            sessionFactory = new Configuration().configure().buildSessionFactory();
+        	sessionFactoryGenerator = new Configuration().configure("hibernate_gen.cfg.xml").buildSessionFactory();
         } catch (Throwable ex) {
-            // Log the exception. 
-            System.err.println("Initial SessionFactory creation failed." + ex);
+            System.err.println("Initial SessionFactoryGenerator creation failed." + ex);
             throw new ExceptionInInitializerError(ex);
         }
     }
     
-    public static SessionFactory getSessionFactory() {
-        return sessionFactory;
+    static {
+        try {
+        	sessionFactoryMain = new Configuration().configure("hibernate_main.cfg.xml").buildSessionFactory();
+        } catch (Throwable ex) {
+            System.err.println("Initial SessionFactoryGenerator creation failed." + ex);
+            throw new ExceptionInInitializerError(ex);
+        }
+    }
+    
+    public static SessionFactory getSessionFactoryGenerator() {
+        return sessionFactoryGenerator;
+    }
+    
+    public static SessionFactory getSessionFactoryMain() {
+        return sessionFactoryMain;
     }
 }

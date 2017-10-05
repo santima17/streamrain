@@ -3,9 +3,9 @@ package com.tsi2.streamrain.converters.user;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.tsi2.streamrain.model.generator.Users;
 import com.tsi2.streamrain.converters.interfaces.IConverter;
 import com.tsi2.streamrain.datatypes.user.UserDto;
-import com.tsi2.streamrain.model.Users;
 
 public class UserConverter implements IConverter<UserDto, Users>{
 

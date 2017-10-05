@@ -14,7 +14,7 @@
 
 	<dependencies>
 
-		<!-- BUSSINES LAYER STREAMRAIN -->
+		<!-- SERVICES LAYER STREAMRAIN -->
 		<dependency>
 			<groupId>com.tsi2.streamrain</groupId>
 			<artifactId>streamrainuserservices</artifactId>

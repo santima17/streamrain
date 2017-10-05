@@ -1,6 +1,6 @@
 package com.tsi2.streamrain.bussines.user.interfaces;
 
-import com.tsi2.streamrain.model.Users;
+import com.tsi2.streamrain.model.generator.Users;
 
 public interface IDAOUserBussines {
 	
