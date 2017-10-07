@@ -22,7 +22,14 @@ public class LoginController {
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
     public String hello(@RequestParam(value="name", required=false, defaultValue="Pepe") String name, Model model) {
         model.addAttribute("name", name);
-        userService.saveUser(new UserDto());
+        UserDto user = new UserDto();
+        user.setNickname("Santi");
+        user.setCity("MVD");
+        user.setEmail("santi@gmail.com");
+        user.setIsBanned(true);
+        user.setCountry("URU");
+        user.setPassword("pass");
+        userService.saveUser(user, "generator1");
         return USER_PREFIX + "login";
     }
 	

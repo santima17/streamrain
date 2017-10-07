@@ -4,6 +4,6 @@ import com.tsi2.streamrain.model.generator.Users;
 
 public interface IDAOUserBussines {
 	
-	public boolean saveUser(Users u);
+	public boolean saveUser(final Users u, final String tenantID);
 
 }

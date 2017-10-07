@@ -14,10 +14,10 @@ import com.tsi2.streamrain.services.user.interfaces.IUserService;
 
 public class UserServiceImpl implements IUserService{
 
-	public boolean saveUser(UserDto u) {
+	public boolean saveUser(final UserDto u, final String tenantID) {
 		IDAOUserBussines daoService = (DAOUserBussinesImpl) StremRainUserBussinesContextLoader.contextLoader().getBean("userBussines");
 		IConverter userConverter = (UserConverter)StremRainFacadesContextLoader.contextLoader().getBean("userConverter");
-		daoService.saveUser((Users)userConverter.deConverter(u));
+		daoService.saveUser((Users)userConverter.deConverter(u), tenantID);
 		return true;
 	}
 }

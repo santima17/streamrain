@@ -13,9 +13,9 @@ import java.util.List;
  */
 public interface IDAOService {
     
-    public <T> T save(final T o);
-    public <T> T get(final Class<T> type, final Long id);
-    public <T> T merge(final T o);
-    public <T> boolean saveOrUpdate(final T o);
-    public <T> List<T> getAll(final Class<T> type);
+    public <T> T save(final T o, final String tenantID);
+    public <T> T get(final Class<T> type, final Long id, final String tenantID);
+    public <T> T merge(final T o, final String tenantID);
+    public <T> boolean saveOrUpdate(final T o, final String tenantID);
+    public <T> List<T> getAll(final Class<T> type, final String tenantID);
 }

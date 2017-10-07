@@ -4,6 +4,6 @@ import com.tsi2.streamrain.datatypes.user.UserDto;
 
 public interface IUserService {
 	
-	public boolean saveUser(UserDto u);
+	public boolean saveUser(final UserDto u, final String tenantID);
 
 }

@@ -16,8 +16,14 @@ public class UserConverter implements IConverter<UserDto, Users>{
 	}
 
 	public Users deConverter(UserDto source) {
-		// TODO Auto-generated method stub
-		return null;
+		Users user = new Users();
+		user.setCity(source.getCity());
+		user.setCountry(source.getCountry());
+		user.setEmail(source.getEmail());
+		user.setIsBanned(source.getIsBanned());
+		user.setPassword(source.getPassword());
+		user.setNickname(source.getNickname());
+		return user;
 	}
 
 	public List<UserDto> convertAll(List<Users> source) {

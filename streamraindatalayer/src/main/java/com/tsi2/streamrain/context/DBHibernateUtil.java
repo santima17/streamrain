@@ -5,6 +5,7 @@
  */
 package com.tsi2.streamrain.context;
 
+import org.hibernate.Session;
 /**
  *
  * @author santiago
@@ -20,12 +21,12 @@ import org.hibernate.cfg.Configuration;
  */
 public class DBHibernateUtil {
 
-    private static final SessionFactory sessionFactoryGenerator;
+    private static Session sessionFactoryGenerator;
     private static final SessionFactory sessionFactoryMain;
     
     static {
         try {
-        	sessionFactoryGenerator = new Configuration().configure("hibernate_gen.cfg.xml").buildSessionFactory();
+        	sessionFactoryGenerator = null;
         } catch (Throwable ex) {
             System.err.println("Initial SessionFactoryGenerator creation failed." + ex);
             throw new ExceptionInInitializerError(ex);
@@ -41,7 +42,8 @@ public class DBHibernateUtil {
         }
     }
     
-    public static SessionFactory getSessionFactoryGenerator() {
+    public static Session getSessionFactoryGenerator(final String tenantID) {
+    	sessionFactoryGenerator = (Session) new Configuration().configure("hibernate_gen.cfg.xml").buildSessionFactory().withOptions().tenantIdentifier(tenantID).openSession();
         return sessionFactoryGenerator;
     }
     

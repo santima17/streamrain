@@ -1,61 +1,38 @@
 package com.tsi2.streamrain.dao.implementations;
 
-import java.sql.Connection;
-import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.List;
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.engine.jdbc.connections.spi.AbstractMultiTenantConnectionProvider;
+import org.hibernate.engine.jdbc.connections.spi.ConnectionProvider;
 
-import javax.sql.DataSource;
+import com.tsi2.streamrain.context.DBHibernateUtil;
+import com.tsi2.streamrain.model.main.Tenants;
 
-import org.apache.commons.dbcp.BasicDataSource;
-import org.hibernate.engine.jdbc.connections.spi.MultiTenantConnectionProvider;
+public class StreamRainMultiTenantConnectionProvider extends AbstractMultiTenantConnectionProvider {
 
-public class StreamRainMultiTenantConnectionProvider implements MultiTenantConnectionProvider {
-	
-	private static final long serialVersionUID = 1L;
+	private static final String TENANT_ID_PREFIX = "generator";
+	private HashMap<String, StreamRainConnectionProvider> connectionsMap = new HashMap<String, StreamRainConnectionProvider>();
 
-	public boolean isUnwrappableAs(Class arg0) {
-		return false;
+	public StreamRainMultiTenantConnectionProvider() {
+
+		Session dbSession = DBHibernateUtil.getSessionFactoryMain().openSession();
+		Criteria search = dbSession.createCriteria(Tenants.class);
+		for (Tenants tenant : (List<Tenants>)search.list()) {
+			connectionsMap.put(String.valueOf(TENANT_ID_PREFIX+tenant.getId()), new StreamRainConnectionProvider(tenant));
+		}
+
 	}
 
-	public <T> T unwrap(Class<T> arg0) {
+	@Override
+	protected ConnectionProvider getAnyConnectionProvider() {
 		return null;
 	}
 
-	public Connection getAnyConnection() throws SQLException {
-		BasicDataSource dataSource = new BasicDataSource();
-		dataSource.setUsername("root");
-		dataSource.setPassword("apagon23");
-		dataSource.setUrl("jdbc:mysql://localhost:3306/generator?zeroDateTimeBehavior=convertToNull");
-		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-		dataSource.setDefaultAutoCommit(true);
-		final Connection connection = dataSource.getConnection();
-		return connection;
-	}
-
-	public Connection getConnection(String tenantID) throws SQLException {
-
-		BasicDataSource dataSource = new BasicDataSource();
-		dataSource.setUsername("root");
-		dataSource.setPassword("apagon23");
-		dataSource.setUrl("jdbc:mysql://localhost:3306/generator?zeroDateTimeBehavior=convertToNull");
-		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-		dataSource.setDefaultAutoCommit(true);
-		final Connection connection = dataSource.getConnection();
-		return connection;
-	}
-
-	public void releaseAnyConnection(Connection arg0) throws SQLException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void releaseConnection(String arg0, Connection arg1) throws SQLException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public boolean supportsAggressiveRelease() {
-		// TODO Auto-generated method stub
-		return false;
+	@Override
+	protected ConnectionProvider selectConnectionProvider(final String tenant) {
+		return connectionsMap.get(tenant);
 	}
 
 }
