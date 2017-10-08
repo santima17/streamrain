@@ -22,10 +22,10 @@
             <column name="cover_photo_url" length="150" />
         </property>
         <property name="isActor" type="java.lang.Boolean">
-            <column name="is_actor?" />
+            <column name="is_actor" />
         </property>
         <property name="isDirector" type="java.lang.Boolean">
-            <column name="is_director?" />
+            <column name="is_director" />
         </property>
     </class>
 </hibernate-mapping>

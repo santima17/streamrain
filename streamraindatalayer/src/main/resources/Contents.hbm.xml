@@ -27,7 +27,7 @@
             <column name="storage_url" length="150" not-null="true" />
         </property>
         <property name="isPayPerView" type="java.lang.Boolean">
-            <column name="is_pay_per_view?" />
+            <column name="is_pay_per_view" />
         </property>
         <set name="categorieses" table="content_categories" inverse="false" lazy="true" fetch="select">
             <key>

@@ -35,7 +35,6 @@ public class LoginController {
         user.setCountry("URU");
         user.setPassword("pass");
         user.setFacebookUserId("");
-        user.setId(2);
         user.setIntegratorId("");
         user.setTwitterUserId("");
         userService.saveUser(user, "generator1");

@@ -25,7 +25,7 @@
             <column name="rate" not-null="true" />
         </property>
         <property name="useForRecommendations" type="java.lang.Boolean">
-            <column name="use_for_recommendations?" />
+            <column name="use_for_recommendations" />
         </property>
     </class>
 </hibernate-mapping>

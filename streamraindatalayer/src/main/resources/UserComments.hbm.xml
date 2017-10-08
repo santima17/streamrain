@@ -21,7 +21,7 @@
             <column name="text" length="150" not-null="true" />
         </property>
         <property name="isDeleted" type="java.lang.Boolean">
-            <column name="is_deleted?" />
+            <column name="is_deleted" />
         </property>
         <set name="spoilerMarkses" table="spoiler_marks" inverse="true" lazy="true" fetch="select">
             <key>

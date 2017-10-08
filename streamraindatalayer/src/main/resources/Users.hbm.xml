@@ -18,7 +18,7 @@
             <column name="password" length="45" not-null="true" />
         </property>
         <property name="isBanned" type="java.lang.Boolean">
-            <column name="is_banned?" />
+            <column name="is_banned" />
         </property>
         <property name="country" type="string">
             <column name="country" length="100" not-null="true" />

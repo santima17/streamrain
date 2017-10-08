@@ -22,7 +22,7 @@
             <column name="user_id" not-null="true" />
         </many-to-one>
         <property name="fav" type="boolean">
-            <column name="fav?" not-null="true" />
+            <column name="fav" not-null="true" />
         </property>
     </class>
 </hibernate-mapping>
