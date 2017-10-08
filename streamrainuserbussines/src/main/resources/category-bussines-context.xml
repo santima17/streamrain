@@ -5,9 +5,6 @@
 
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-	
-	<bean id="userConverter" class="com.tsi2.streamrain.converters.user.UserConverter" />
-	
-	<bean id="categoryConverter" class="com.tsi2.streamrain.converters.category.CategoryConverter" />
-	
+	<bean id="categoryBussines" class="com.tsi2.streamrain.bussines.category.implementations.DAOCategoryBussinesImpl" />
+
 </beans>
