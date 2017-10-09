@@ -6,4 +6,6 @@ public interface IDAOUserBussines {
 	
 	public boolean saveUser(final Users u, final String tenantID);
 
+	public boolean findUserXNickname(String nickname, String tenantID);
+
 }

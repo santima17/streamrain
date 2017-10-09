@@ -6,6 +6,7 @@ public class UserDto {
     private String email;
     private String nickname;
     private String password;
+    private String confirmPass;
     private Boolean isBanned;
     private String country;
     private String city;
@@ -72,6 +73,11 @@ public class UserDto {
 	public void setIntegratorId(String integratorId) {
 		this.integratorId = integratorId;
 	}
-
+	public String getConfirmPass() {
+		return confirmPass;
+	}
+	public void setConfirmPass(String confirmPass) {
+		this.confirmPass = confirmPass;
+	}
     
 }

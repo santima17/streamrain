@@ -20,4 +20,9 @@ public class UserServiceImpl implements IUserService{
 		daoService.saveUser((Users)userConverter.deConverter(u), tenantID);
 		return true;
 	}
+
+	public boolean existsUserXNickName(String nickname, String tenantID) {
+		IDAOUserBussines daoService = (DAOUserBussinesImpl) StremRainUserBussinesContextLoader.contextLoader().getBean("userBussines");
+		return daoService.findUserXNickname(nickname, tenantID);
+	}
 }
