@@ -5,5 +5,11 @@
 
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<bean id="userService" class="com.tsi2.streamrain.services.user.implementations.UserServiceImpl" />
+	<bean id="userService"
+		class="com.tsi2.streamrain.services.user.implementations.UserServiceImpl" />
+	<bean id="categoryService"
+		class="com.tsi2.streamrain.services.category.implementations.UserServiceImpl" />
+		<bean id="tenantService"
+		class="com.tsi2.streamrain.services.tenants.implementations.TenantServiceImpl" />
+		
 </beans>

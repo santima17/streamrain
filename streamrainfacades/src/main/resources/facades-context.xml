@@ -10,4 +10,6 @@
 	
 	<bean id="categoryConverter" class="com.tsi2.streamrain.converters.category.CategoryConverter" />
 	
+	<bean id="tenantConverter" class="com.tsi2.streamrain.converters.tenant.TenantConverter" />
+	
 </beans>
