@@ -23,49 +23,57 @@
 	</head>
 	 
 	<body>			
-		<c:url value="/registerProcess" var="destino"/>			
+		<c:if test="${SUCCESS_MESSAGE != null}">
+		  <div id="status_message">${SUCCESS_MESSAGE}</div>
+		</c:if> 
+		<c:url value="registerProcess" var="destino"/>			
 		<form:form method="post" action="${destino}" commandName="userDto">
 			<h1>Register User</h1>
 			<table>
 				<tbody>
 					<tr>
-					<td>Email:</td>
-					<td><form:input path="email" /></td>
-					<td><form:errors path="email" cssClass="fielderror"/></td>
+						<td>Email:</td>
+						<td><form:input path="email" /></td>
+						<td><form:errors path="email" cssClass="fielderror"/></td>
 					</tr>
 					<tr>
-					<td>Nickname:</td>
-					<td><form:input path="nickname" /></td>
-					<td><form:errors path="nickname" cssClass="fielderror"/></td>
+						<td>Nickname:</td>
+						<td><form:input path="nickname" /></td>
+						<td><form:errors path="nickname" cssClass="fielderror"/></td>
 					</tr>
 					<tr>
-					<td>Password:</td>
-					<td><form:password path="password" /></td>
-					<td><form:errors path="password" cssClass="fielderror"/></td>
+						<td>Password:</td>
+						<td><form:password path="password" /></td>
+						<td><form:errors path="password" cssClass="fielderror"/></td>
 					</tr>
 					<tr>
-					<td>Confirm Password:</td>
-					<td><form:password path="confirmPass" /></td>
-					<td><form:errors path="confirmPass" cssClass="fielderror"/></td>
+						<td>Confirm Password:</td>
+						<td><form:password path="confirmPass" /></td>
+						<td><form:errors path="confirmPass" cssClass="fielderror"/></td>
 					</tr>
 					<tr>
-					<td>Country: </td>
-					<td>
-					<form:select path="country" >
-					 <form:option value="NONE" label="--- Select ---"/>
-					 <form:options items="${countryList}" />
-					</form:select>
-					</td>
-					<td><form:errors path="country" cssClass="fielderror" /></td>
+						<td>Country: </td>
+						<td>
+						<form:select path="country" >
+						 <form:option value="NONE" label="--- Select ---"/>
+						 <form:options items="${countryList}" />
+						</form:select>
+						</td>
+						<td><form:errors path="country" cssClass="fielderror" /></td>
 					</tr>
 					<tr>
-					<td>City:</td>
-					<td><form:input path="city" /></td>
-					<td><form:errors path="city" cssClass="fielderror"/></td>
+						<td>City:</td>
+						<td><form:input path="city" /></td>
+						<td><form:errors path="city" cssClass="fielderror"/></td>
 					</tr>
 					<tr>
-					<td colspan="3"><input type="submit" value="Send" /></td>
+						<td colspan="3"><input type="submit" value="Send" /></td>
 					</tr>
+					<tr>
+		                <td align="right">
+		                	<a href="login">Login</a>
+		                </td>
+		             </tr>
 				</tbody>
 			</table>
 		</form:form>    		

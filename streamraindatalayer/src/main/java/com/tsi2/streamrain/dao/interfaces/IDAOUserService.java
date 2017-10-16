@@ -4,4 +4,6 @@ public interface IDAOUserService extends IDAOService {
 	
 	public boolean findByNickname(final String nickname, final String tenantID);
 
+	public boolean findByNicknamePassword(String nickname, String password, String tenantID);
+
 }

@@ -16,4 +16,13 @@ public class StreamRainMySQLUserDAO extends StreamRainMySQLDAO implements IDAOUs
 		return user != null;
 	}
 
+	public boolean findByNicknamePassword(String nickname, String password, String tenantID) {
+		Session dbSession = DBHibernateUtil.getSessionFactoryGenerator(tenantID);
+		Users user = (Users) dbSession.createQuery("select u from Users u where u.nickname = :nickname and u.password = :pass")
+        .setString("nickname", nickname)
+        .setString("pass", password)
+        .uniqueResult();
+		return user != null;
+	}
+
 }

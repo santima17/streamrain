@@ -11,6 +11,7 @@ public class Tenants  implements java.io.Serializable {
 
      private int id;
      private String name;
+     private String portal;
      private String ip;
      private int port;
      private String user;
@@ -19,9 +20,10 @@ public class Tenants  implements java.io.Serializable {
     public Tenants() {
     }
 
-    public Tenants(int id, String name, String ip, int port, String user, String password) {
+    public Tenants(int id, String name, String portal, String ip, int port, String user, String password) {
        this.id = id;
        this.name = name;
+       this.portal = portal;
        this.ip = ip;
        this.port = port;
        this.user = user;
@@ -71,9 +73,15 @@ public class Tenants  implements java.io.Serializable {
         this.password = password;
     }
 
+	public String getPortal() {
+		return portal;
+	}
 
+	public void setPortal(String portal) {
+		this.portal = portal;
+	}
 
-
+    
 }
 
 

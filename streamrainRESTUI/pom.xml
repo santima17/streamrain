@@ -84,6 +84,78 @@
 			<version>1.1.2</version>
 			<scope>compile</scope>
 		</dependency>
+		
+		<!-- Spring Security -->
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-core</artifactId>
+		    <version>4.2.3.RELEASE</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-taglibs</artifactId>
+		    <version>4.2.3.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-web</artifactId>
+		    <version>4.2.3.RELEASE</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-config</artifactId>
+		    <version>4.2.3.RELEASE</version>
+		</dependency>
+		
+		<!-- Use Apache HttpClient as HTTP Client -->
+		<dependency>
+		    <groupId>org.apache.httpcomponents</groupId>
+		    <artifactId>httpclient</artifactId>
+		    <version>4.3.2</version>
+		</dependency>
+		
+		<!-- Spring Social -->
+		<dependency>
+		    <groupId>org.springframework.social</groupId>
+		    <artifactId>spring-social-config</artifactId>
+		    <version>1.1.0.RELEASE</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework.social</groupId>
+		    <artifactId>spring-social-core</artifactId>
+		    <version>1.1.0.RELEASE</version>
+		</dependency>
+		<dependency>     
+		    <groupId>org.springframework.social</groupId>
+		    <artifactId>spring-social-security</artifactId>
+		    <version>1.1.0.RELEASE</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework.social</groupId>
+		    <artifactId>spring-social-web</artifactId>
+		    <version>1.1.0.RELEASE</version>
+		</dependency>
+		  
+		<!-- Spring Social Facebook -->
+		<dependency>
+		    <groupId>org.springframework.social</groupId>
+		    <artifactId>spring-social-facebook</artifactId>
+		    <version>1.1.0.RELEASE</version>
+		</dependency>
+		  
+		<!-- Spring Social Twitter -->
+		<dependency>
+		    <groupId>org.springframework.social</groupId>
+		    <artifactId>spring-social-twitter</artifactId>
+		    <version>1.1.0.RELEASE</version>
+		</dependency>
+		
+		<!-- Rewrite -->
+		<dependency>
+		   <groupId>org.ocpsoft.rewrite</groupId>
+		   <artifactId>rewrite-servlet</artifactId>
+		   <version>3.4.1.Final</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>streamrainRESTUI</finalName>
