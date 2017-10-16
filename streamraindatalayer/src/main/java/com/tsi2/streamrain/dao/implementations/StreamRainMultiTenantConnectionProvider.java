@@ -17,7 +17,7 @@ public class StreamRainMultiTenantConnectionProvider extends AbstractMultiTenant
 
 	public StreamRainMultiTenantConnectionProvider() {
 
-		Session dbSession = DBHibernateUtil.getSessionFactoryMain().openSession();
+		Session dbSession = DBHibernateUtil.getSessionFactoryMain();
 		Criteria search = dbSession.createCriteria(Tenants.class);
 		for (Tenants tenant : (List<Tenants>)search.list()) {
 			connectionsMap.put(String.valueOf(TENANT_ID_PREFIX+tenant.getId()), new StreamRainConnectionProvider(tenant));

@@ -53,7 +53,7 @@ public class DBHibernateUtil {
 		return sessionFactoryGenerator;
 	}
 
-	public static SessionFactory getSessionFactoryMain() {
-		return sessionFactoryMain;
+	public static Session getSessionFactoryMain() {
+		return sessionFactoryMain.openSession();
 	}
 }

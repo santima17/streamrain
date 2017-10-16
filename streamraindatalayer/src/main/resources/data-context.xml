@@ -6,5 +6,7 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
 	<bean id="daoUserService" class="com.tsi2.streamrain.dao.implementations.StreamRainMySQLUserDAO"/>
+	<bean id="daoMainService" class="com.tsi2.streamrain.dao.implementations.StreamRainMySQLMainDAO"/>
+	
 	
 </beans>

@@ -16,4 +16,8 @@
 	<bean id="userService" class="com.tsi2.streamrain.services.user.implementations.UserServiceImpl" />
 
 	<bean id="categoryService" class="com.tsi2.streamrain.services.category.implementations.CategoryServiceImpl" />
+	
+	<bean id="tenantService" class="com.tsi2.streamrain.services.tenants.implementations.TenantServiceImpl" />
+	
+	
 </beans>
