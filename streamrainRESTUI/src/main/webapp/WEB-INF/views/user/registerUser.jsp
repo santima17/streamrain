@@ -23,12 +23,15 @@
 	</head>
 	 
 	<body>			
-		<c:if test="${SUCCESS_MESSAGE != null}">
-		  <div id="status_message">${SUCCESS_MESSAGE}</div>
-		</c:if> 
+		<h1>Register User</h1>
+		<c:if test="${not empty message}">
+			<td style="font-style: italic; color: green;">${message}</td>
+		</c:if>
+		<c:if test="${not empty error}">
+			<td style="font-style: italic; color: red;">${error}</td>
+		</c:if>
 		<c:url value="registerProcess" var="destino"/>			
 		<form:form method="post" action="${destino}" commandName="userDto">
-			<h1>Register User</h1>
 			<table>
 				<tbody>
 					<tr>

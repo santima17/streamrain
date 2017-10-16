@@ -32,7 +32,7 @@
                 <td align="right">
                 	<a href="registerUser">Register</a>
                 </td>
-             </tr>
+           	 </tr>
 	         </tbody>
 	      </table>
 	  </form:form>

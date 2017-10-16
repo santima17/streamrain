@@ -5,6 +5,7 @@ import javax.annotation.Resource;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -37,20 +38,21 @@ public class UserController {
     }
 	
 	@RequestMapping(value = "/{tenant}/registerProcess", method = RequestMethod.POST)
-    public String registerUser(@PathVariable("tenant") String tenant, @Valid UserDto userDto, BindingResult result, RedirectAttributes redirectAttributes) {
+    public String registerUser(@PathVariable("tenant") String tenant, @Valid UserDto userDto, BindingResult result, Model model) {
 		if (result.hasErrors()) {
 			return USER_PREFIX + "registerUser";
 		}
 		if (userDto.getNickname() != null && (!"".equals(userDto.getNickname()))) {
 			if (userService.existsUserXNickName(userDto.getNickname(), tenant)) {
-				//Mostrar error("Already exists a users with that nickname");
+				model.addAttribute("error", "Already exists a users with that nickname");
 				return USER_PREFIX + "registerUser";
 			}
 		}
 		String passEncrptyed = Utils.encryptPassword(userDto.getPassword());
 		userDto.setPassword(passEncrptyed);
 		userService.saveUser(userDto, tenant);
-		redirectAttributes.addFlashAttribute("SUCCESS_MESSAGE", "Se registro el usuario correctamente.");
+		model.addAttribute("message", "The user was successfully registered");
+		
 		return USER_PREFIX + "registerUser";
 	}
 	
