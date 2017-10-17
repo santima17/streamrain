@@ -11,6 +11,9 @@
         <property name="name" type="string">
             <column name="name" length="45" not-null="true" />
         </property>
+        <property name="portal" type="string">
+            <column name="portal" length="45" not-null="true" />
+        </property>
         <property name="ip" type="string">
             <column name="ip" length="16" not-null="true" />
         </property>

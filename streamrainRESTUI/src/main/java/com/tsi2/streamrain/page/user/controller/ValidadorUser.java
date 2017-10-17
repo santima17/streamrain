@@ -1,19 +1,13 @@
 package com.tsi2.streamrain.page.user.controller;
 
-import javax.annotation.Resource;
-
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 import com.tsi2.streamrain.datatypes.user.UserDto;
-import com.tsi2.streamrain.services.user.interfaces.IUserService;
 import com.tsi2.streamrain.utils.Utils;
 
 public class ValidadorUser implements Validator {
-
-	@Resource(name="userService")
-	IUserService userService;
 
 	@Override
 	public boolean supports(Class<?> clazz) {

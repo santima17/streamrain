@@ -12,7 +12,6 @@ import com.tsi2.streamrain.services.tenants.interfaces.ITenantService;
 
 public class TenantServiceImpl implements ITenantService{
 
-	@Override
 	public boolean saveTenant(final TenantDto tenant) {
 		IDAOTenantBussines tenantBussines = (DAOTenantBussinesImpl) StremRainUserBussinesContextLoader.contextLoader().getBean("tenantBussines");
 		IConverter tenantConverter = (TenantConverter)StremRainFacadesContextLoader.contextLoader().getBean("tenantConverter");
