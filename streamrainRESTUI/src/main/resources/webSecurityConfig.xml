@@ -8,9 +8,12 @@
     http://www.springframework.org/schema/beans 
     http://www.springframework.org/schema/beans/spring-beans-4.2.xsd">
  
+   <http pattern="/static/**" security="none" />
+ 	
    <http use-expressions="true">
       <intercept-url pattern="/login*" access="isAnonymous()" />
       <intercept-url pattern="/portal/**" access="isAuthenticated()"/>
+      <intercept-url pattern="/auth/**" access="permitAll"/>
  
       <form-login
          login-page='/login.html'
