@@ -25,4 +25,12 @@ public class StreamRainMySQLUserDAO extends StreamRainMySQLDAO implements IDAOUs
 		return user != null;
 	}
 
+	public boolean findByTwitterId(String twitterId, String tenantID) {
+		Session dbSession = DBHibernateUtil.getSessionFactoryGenerator(tenantID);
+		Users user = (Users) dbSession.createQuery("select u from Users u where u.twitterUserId = :twitterUserId")
+        .setString("twitterUserId", twitterId)
+        .uniqueResult();
+		return user != null;
+	}
+
 }

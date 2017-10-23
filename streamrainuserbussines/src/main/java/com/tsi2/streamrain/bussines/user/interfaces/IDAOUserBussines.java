@@ -10,4 +10,6 @@ public interface IDAOUserBussines {
 
 	boolean findUser(String nickname, String password, String tenantID);
 
+	boolean findUserXTwitterId(String twitterId, String tenantID);
+
 }

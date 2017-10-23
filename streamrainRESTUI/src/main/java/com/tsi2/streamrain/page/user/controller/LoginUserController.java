@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.tsi2.streamrain.services.user.interfaces.IUserService;
 import com.tsi2.streamrain.springmvc.model.Login;
+import com.tsi2.streamrain.utils.Utils;
 
 @Controller
 public class LoginUserController {
@@ -41,8 +42,8 @@ public class LoginUserController {
 	public ModelAndView loginProcess(@PathVariable("tenant") String tenant, @ModelAttribute("login") Login login) {
 	    ModelAndView mav = null;
 	    
-	    //String passEncrptyed = Utils.encryptPassword(login.getPassword());
-	    String passEncrptyed = login.getPassword();
+	    String passEncrptyed = Utils.encryptPassword(login.getPassword());
+	    //String passEncrptyed = login.getPassword();
 	    boolean existUser = userService.existsUser(login.getUsername(), passEncrptyed, tenant);
 	    if (existUser) {
 	    	mav = new ModelAndView("welcome");

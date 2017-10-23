@@ -31,6 +31,11 @@ public class UserServiceImpl implements IUserService{
 		return daoService.findUser(nickname, password, tenantID);
 	}
 
+	public boolean existsUserXTwitterId(String twitterId, String tenantID) {
+		IDAOUserBussines daoService = (DAOUserBussinesImpl) StremRainUserBussinesContextLoader.contextLoader().getBean("userBussines");
+		return daoService.findUserXTwitterId(twitterId, tenantID);
+	}
+
 	
 		
 }

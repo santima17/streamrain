@@ -9,5 +9,7 @@ public interface IUserService {
 	boolean existsUser(final String nickname, final String password, final String tenantID);
 	
 	boolean existsUserXNickName (final String nickname, final String tenantID);
+	
+	boolean existsUserXTwitterId (final String twitterId, final String tenantID);
 
 }

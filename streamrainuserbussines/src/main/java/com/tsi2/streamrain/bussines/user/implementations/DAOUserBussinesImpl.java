@@ -24,6 +24,11 @@ public class DAOUserBussinesImpl implements IDAOUserBussines{
 		return daoService.findByNicknamePassword(nickname, password, tenantID); 
 	}
 
+	public boolean findUserXTwitterId(String twitterId, String tenantID) {
+		IDAOUserService daoService = (StreamRainMySQLUserDAO) StremRainDataContextLoader.contextLoader().getBean("daoUserService");
+		return daoService.findByTwitterId(twitterId, tenantID); 
+	}
+
 	
 
 }

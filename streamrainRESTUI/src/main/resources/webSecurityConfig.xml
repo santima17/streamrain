@@ -22,7 +22,10 @@
          authentication-failure-url="/login.html?error=true" 
          />
  
-      <logout logout-success-url="/login.html" />
+      <logout 
+      	logout-success-url="/login.html"
+      	delete-cookies="JSESSIONID"
+       />
  
    </http>
    <authentication-manager>
