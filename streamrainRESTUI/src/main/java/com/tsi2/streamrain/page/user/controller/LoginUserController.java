@@ -4,6 +4,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.tsi2.streamrain.services.tenants.interfaces.ITenantService;
 import com.tsi2.streamrain.services.user.interfaces.IUserService;
 import com.tsi2.streamrain.springmvc.model.Login;
 import com.tsi2.streamrain.utils.Utils;
@@ -18,26 +20,23 @@ import com.tsi2.streamrain.utils.Utils;
 @Controller
 public class LoginUserController {
 	
-	@Resource(name="userService")
+	@Autowired
 	IUserService userService;
+	
+	@Autowired
+	ITenantService tenantService;
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView showLogin(HttpServletRequest request, HttpServletResponse response) {
 		String tenant = request.getParameter("param");
 		System.out.println("TenantID="+tenant);
+		tenantService.setCurrentTenant(tenant);
 		ModelAndView mav = new ModelAndView("login");
 	    mav.addObject("login", new Login());
 	    return mav;
 	}
 	
-	/*@RequestMapping(value = "/{subpath}/login", method = RequestMethod.GET)
-	public ModelAndView showLogin(@PathVariable("subpath") String subpath, HttpServletRequest request, HttpServletResponse response) {
-		ModelAndView mav = new ModelAndView("login");
-	    mav.addObject("login", new Login());
-	    return mav;
-	}*/
-	
-	
+		
 	@RequestMapping(value = "/{tenant}/loginProcess", method = RequestMethod.POST)
 	public ModelAndView loginProcess(@PathVariable("tenant") String tenant, @ModelAttribute("login") Login login) {
 	    ModelAndView mav = null;

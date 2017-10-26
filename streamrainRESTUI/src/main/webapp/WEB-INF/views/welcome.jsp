@@ -14,6 +14,11 @@
         <tr>
             <td>Welcome ${firstname}</td>
         </tr>
+        
+        <tr>
+            <td><a href="portal/createContent">Create Content</a>
+            </td>
+        </tr>
     </table>
 </body>
 </html>

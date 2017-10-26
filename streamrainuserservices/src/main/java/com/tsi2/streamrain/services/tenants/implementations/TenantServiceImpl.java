@@ -11,6 +11,16 @@ import com.tsi2.streamrain.model.main.Tenants;
 import com.tsi2.streamrain.services.tenants.interfaces.ITenantService;
 
 public class TenantServiceImpl implements ITenantService{
+	
+	private String currentTenant;
+	
+	public String getCurrentTenant() {
+		return currentTenant;
+	}
+
+	public void setCurrentTenant(String currentTenant) {
+		this.currentTenant = currentTenant;
+	}
 
 	public boolean saveTenant(final TenantDto tenant) {
 		IDAOTenantBussines tenantBussines = (DAOTenantBussinesImpl) StremRainUserBussinesContextLoader.contextLoader().getBean("tenantBussines");
@@ -18,5 +28,7 @@ public class TenantServiceImpl implements ITenantService{
 		tenantBussines.saveTenant((Tenants)tenantConverter.deConverter(tenant));
 		return false;
 	}
+	
+	
 
 }

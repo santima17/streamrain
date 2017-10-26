@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.tsi2.streamrain.datatypes.user.UserDto;
+import com.tsi2.streamrain.services.tenants.interfaces.ITenantService;
 import com.tsi2.streamrain.services.user.interfaces.IUserService;
 
 @Controller
@@ -34,12 +35,16 @@ public class SocialRedController {
 	
 	@Autowired
 	IUserService userService;
+	
+	@Autowired
+	ITenantService tenantService;
 			
 	@RequestMapping(value = "/{tenant}/auth/twitter", method = RequestMethod.GET)
 	public String showLogin(@PathVariable("tenant") String tenant, HttpServletRequest request, HttpServletResponse response) {
 		try {		
 			//HttpSession session = request.getSession();
 			//session.setAttribute("tenantId",tenant);
+			tenantService.setCurrentTenant(tenant);
 			
 			OAuth1Operations oauth1Operations = connectionFactoryTwitter.getOAuthOperations();
 						 
@@ -78,8 +83,9 @@ public class SocialRedController {
 			
 			//HttpSession session = (HttpSession) request.getSession();
 			//String tenantId = (String) session.getAttribute("tenantId");
+			String tenantId = tenantService.getCurrentTenant();
 			
-			if (!userService.existsUserXTwitterId(connectionKey.getProviderUserId(), "generator1")) {
+			if (!userService.existsUserXTwitterId(connectionKey.getProviderUserId(), tenantId)) {
 				UserDto user = new UserDto();
 				user.setTwitterUserId(connectionKey.getProviderUserId());
 				user.setNickname(name);
@@ -87,7 +93,7 @@ public class SocialRedController {
 				user.setEmail("");
 				user.setPassword("");
 				user.setCity("");
-				userService.saveUser(user, "generator1");
+				userService.saveUser(user, tenantId);
 			}
 			
 		    ModelAndView mav = null;

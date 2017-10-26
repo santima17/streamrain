@@ -4,5 +4,9 @@ import com.tsi2.streamrain.datatypes.tenant.TenantDto;
 
 public interface ITenantService {
 
-	public boolean saveTenant(final TenantDto tenant);
+	boolean saveTenant(final TenantDto tenant);
+	
+	String getCurrentTenant();
+	
+	void setCurrentTenant(String currentTenant);
 }

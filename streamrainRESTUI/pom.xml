@@ -164,6 +164,18 @@
 		   <artifactId>rewrite-servlet</artifactId>
 		   <version>3.4.1.Final</version>
 		</dependency>
+		
+		<!-- Upload File -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.2.2</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.0</version>
+		</dependency>		
 	</dependencies>
 	<build>
 		<finalName>streamrainRESTUI</finalName>
