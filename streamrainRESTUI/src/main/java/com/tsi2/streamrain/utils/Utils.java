@@ -107,10 +107,10 @@ public class Utils {
 		  country.add("Costa Rica");
 		  country.add("Croatia");
 		  country.add("Cuba");
-		  country.add("Curaçao");
+		  country.add("Curacao");
 		  country.add("Cyprus");
 		  country.add("Czech Republic");
-		  country.add("Côte d’Ivoire");
+		  country.add("Cote d'Ivoire");
 		  country.add("Denmark");
 		  country.add("Djibouti");
 		  country.add("Dominica");
@@ -225,8 +225,6 @@ public class Utils {
 		  country.add("Romania");
 		  country.add("Russia");
 		  country.add("Rwanda");
-		  country.add("Réunion");
-		  country.add("Saint Barthélemy");
 		  country.add("Saint Kitts and Nevis");
 		  country.add("Saint Lucia");
 		  country.add("Saint Martin");
@@ -255,7 +253,6 @@ public class Utils {
 		  country.add("Sweden");
 		  country.add("Switzerland");
 		  country.add("Syria");
-		  country.add("São Tomé and Príncipe");
 		  country.add("Taiwan");
 		  country.add("Tanzania");
 		  country.add("Thailand");
@@ -282,7 +279,6 @@ public class Utils {
 		  country.add("Yemen");
 		  country.add("Zambia");
 		  country.add("Zimbabwe");
-		  country.add("Åland Islands");
 		  return country;
 	}
 
