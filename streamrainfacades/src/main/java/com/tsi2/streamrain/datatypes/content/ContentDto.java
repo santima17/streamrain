@@ -1,6 +1,8 @@
 package com.tsi2.streamrain.datatypes.content;
 
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
 
 public class ContentDto {
 	
@@ -12,7 +14,9 @@ public class ContentDto {
     private String coverPictureUrl;
     private String storageUrl;
     private Boolean isPayPerView;
-    private CommonsMultipartFile picture;
+    private List<ContentCastDto> actors;
+    private MultipartFile picture;
+    private MultipartFile video;
     
 	public Integer getId() {
 		return id;
@@ -62,11 +66,23 @@ public class ContentDto {
 	public void setIsPayPerView(Boolean isPayPerView) {
 		this.isPayPerView = isPayPerView;
 	}
-	public CommonsMultipartFile getPicture() {
+	public MultipartFile getPicture() {
 		return picture;
 	}
-	public void setPicture(CommonsMultipartFile picture) {
+	public void setPicture(MultipartFile picture) {
 		this.picture = picture;
 	}
-	    
+	public MultipartFile getVideo() {
+		return video;
+	}
+	public void setVideo(MultipartFile video) {
+		this.video = video;
+	}
+	public List<ContentCastDto> getActors() {
+		return actors;
+	}
+	public void setActors(List<ContentCastDto> actors) {
+		this.actors = actors;
+	}
+			    
 }

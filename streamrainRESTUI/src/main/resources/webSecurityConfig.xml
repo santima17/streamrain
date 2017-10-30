@@ -43,6 +43,8 @@
 		<intercept-url pattern="/login*" access="isAnonymous()" />
 		<intercept-url pattern="/portal/**" access="isAuthenticated()" />
 		<intercept-url pattern="/auth/**" access="permitAll" />
+		
+		<csrf disabled="true"/>
 
 		<form-login login-page='/login.html' login-processing-url="/perform_login"
 			default-target-url="/welcome.html" authentication-failure-url="/login.html?error=true" />

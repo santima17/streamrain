@@ -2,10 +2,8 @@ package com.tsi2.streamrain.page.user.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.social.connect.Connection;
 import org.springframework.social.connect.ConnectionKey;
 import org.springframework.social.oauth1.AuthorizedRequestToken;
@@ -42,8 +40,6 @@ public class SocialRedController {
 	@RequestMapping(value = "/{tenant}/auth/twitter", method = RequestMethod.GET)
 	public String showLogin(@PathVariable("tenant") String tenant, HttpServletRequest request, HttpServletResponse response) {
 		try {		
-			//HttpSession session = request.getSession();
-			//session.setAttribute("tenantId",tenant);
 			tenantService.setCurrentTenant(tenant);
 			
 			OAuth1Operations oauth1Operations = connectionFactoryTwitter.getOAuthOperations();
@@ -81,8 +77,6 @@ public class SocialRedController {
 			
 			String name = connection.getDisplayName();
 			
-			//HttpSession session = (HttpSession) request.getSession();
-			//String tenantId = (String) session.getAttribute("tenantId");
 			String tenantId = tenantService.getCurrentTenant();
 			
 			if (!userService.existsUserXTwitterId(connectionKey.getProviderUserId(), tenantId)) {

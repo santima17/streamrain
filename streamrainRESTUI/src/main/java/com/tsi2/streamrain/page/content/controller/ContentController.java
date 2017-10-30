@@ -3,24 +3,23 @@ package com.tsi2.streamrain.page.content.controller;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
-
-
+import org.springframework.web.multipart.MultipartFile;
 import com.tsi2.streamrain.datatypes.content.ContentDto;
-import com.tsi2.streamrain.datatypes.user.UserDto;
-import com.tsi2.streamrain.utils.Utils;
 
 @Controller
 public class ContentController {
+	
+	@Value("${location.file.path}")
+	private String location; 
 	
 	private static final String CONTENT_PREFIX = "/generator/content/";
 	
@@ -34,9 +33,11 @@ public class ContentController {
 		if (result.hasErrors()) {
 			return CONTENT_PREFIX + "createContent";
 		}
-		
 		try {
-			recordFile(contentDto);
+			String pictureName = recordFile(contentDto.getPicture());
+			contentDto.setCoverPictureUrl(pictureName);
+			String videoName = recordFile(contentDto.getVideo());
+			contentDto.setStorageUrl(videoName);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "No se ha podido grabar el fichero";
@@ -46,16 +47,18 @@ public class ContentController {
 		return CONTENT_PREFIX + "createContent";
 	}
 	
-	private void recordFile(ContentDto contentDto) throws Exception {
-		CommonsMultipartFile uploaded = contentDto.getPicture();
-		String pathFile = "C:\\Users\\juanb\\Documents\\img\\"+uploaded.getOriginalFilename();
-		contentDto.setCoverPictureUrl(pathFile);
+	private String recordFile(MultipartFile uploaded) throws Exception {
+		//Resource resource = new ClassPathResource("/application.properties");
+		//Properties props = PropertiesLoaderUtils.loadProperties(resource);
+		//String pathLocationFile = props.getProperty("location.file.path");
+		
+		String pathFile = location+uploaded.getOriginalFilename();
     	File localFile = new File(pathFile);
     	FileOutputStream os = null;
     	try {
     		os = new FileOutputStream(localFile);
     		os.write(uploaded.getBytes());
-    		
+    		return uploaded.getOriginalFilename();
     	} finally {
     		if (os != null) {
     			try {
@@ -65,6 +68,11 @@ public class ContentController {
 				}
     		}
     	}
+	}
+	
+	@ModelAttribute("contentDto")
+	public ContentDto populateForm() {
+	     return new ContentDto();
 	}
 
 }
