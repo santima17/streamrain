@@ -1,5 +1,6 @@
 package com.tsi2.streamrain.datatypes.content;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -15,8 +16,12 @@ public class ContentDto {
     private String storageUrl;
     private Boolean isPayPerView;
     private List<ContentCastDto> actors;
+    private List<ContentCastDto> directors;
     private MultipartFile picture;
     private MultipartFile video;
+    private Integer duration;
+    private Date dateStart;
+    private Integer estimatedDuraction;
     
 	public Integer getId() {
 		return id;
@@ -84,5 +89,29 @@ public class ContentDto {
 	public void setActors(List<ContentCastDto> actors) {
 		this.actors = actors;
 	}
-			    
+	public List<ContentCastDto> getDirectors() {
+		return directors;
+	}
+	public void setDirectors(List<ContentCastDto> directors) {
+		this.directors = directors;
+	}
+	public Integer getDuration() {
+		return duration;
+	}
+	public void setDuration(Integer duration) {
+		this.duration = duration;
+	}
+	public Date getDateStart() {
+		return dateStart;
+	}
+	public void setDateStart(Date dateStart) {
+		this.dateStart = dateStart;
+	}
+	public Integer getEstimatedDuraction() {
+		return estimatedDuraction;
+	}
+	public void setEstimatedDuraction(Integer estimatedDuraction) {
+		this.estimatedDuraction = estimatedDuraction;
+	}
+					    
 }

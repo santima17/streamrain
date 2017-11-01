@@ -21,9 +21,11 @@
 			
 			#tabla{	border: solid 1px #333;	width: 300px; }
 			#tabla tbody tr{ background: #999; }
+			#tabla2{	border: solid 1px #333;	width: 300px; }
+			#tabla2 tbody tr{ background: #999; }
 			.fila-base{ display: none; } /* fila base oculta */
 			.eliminar{ cursor: pointer; color: #000; }
-			input[type="text"]{ width: 80px; } /* ancho a los elementos input="text" */
+			/*input[type="text"]{ width: 100px; } /* ancho a los elementos input="text" */*/
 		</style>	
 						
 		<script type="text/javascript" 
@@ -43,6 +45,50 @@
 					$(parent).remove();
 				});
 			});
+
+			$('select[id=selectType]').change(function() {
+				alert("ggggggggggggg");
+		        var userType = $(this).val();
+		        alert(userType);
+		        //$('.description').hide();
+		        //$('#' + userType).show();
+		    });
+
+			$(function() {
+			    $('#selectType').change(function() {
+			        var x = $(this).val();
+			        if (x == 'NONE'){
+			        	$('#dateStart').hide();
+			        	$('#estimatedDuration').hide();
+			        	$('#duration').hide();
+			        	return;
+			        }
+			        if (x == 'Película'){
+			        	$('#dateStart').hide();
+			        	$('#estimatedDuration').hide();
+			        	$('#duration').show();
+			        	return;
+			        }
+		        	if (x == 'Serie'){
+		        		$('#dateStart').hide();
+		        		$('#estimatedDuration').hide();
+		        		$('#duration').show();
+		        		return;
+		        	}
+		        	if (x == 'Evento Deportivo'){
+		        		$('#duration').hide();
+		        		$('#dateStart').show();
+		        		$('#estimatedDuration').show();
+		        		return;
+		        	}
+		        	if (x == 'Evento Espectáculo'){
+		        		$('#duration').hide();
+		        		$('#dateStart').show();
+		        		$('#estimatedDuration').show();
+		        		return;
+		        	}
+			    });
+			});
 		 
 		</script>
 	</head>
@@ -57,7 +103,7 @@
 		</c:if>
 		
 		<c:url value="createContentProcess" var="content"/>			
-		<form:form method="post" action="${content}" enctype="multipart/form-data" commandName="contentDto">
+		<form:form method="post" action="${content}" enctype="multipart/form-data" modelAttribute="contentDto">
 			<table >
 				<tbody>
 					<tr>
@@ -71,9 +117,29 @@
 						<td><form:errors path="description" cssClass="fielderror"/></td>
 					</tr>
 					<tr>
-						<td>Type:</td>
-						<td><form:input path="type" /></td>
-						<td><form:errors path="type" cssClass="fielderror"/></td>
+						<td>Type: </td>
+						<td>
+						<form:select id="selectType" path="type" >
+						 <form:option value="NONE" label="--- Select ---"/>
+						 <form:options items="${typeList}" />
+						</form:select>
+						</td>
+						<td><form:errors path="type" cssClass="fielderror" /></td>
+					</tr>
+					<tr id="duration" style="display:none">
+						<td>Duration:</td>
+						<td><form:input type="number" path="duration" /></td>
+						<td><form:errors path="duration" cssClass="fielderror"/></td>
+					</tr>
+					<tr id="dateStart" style="display:none">
+						<td>Date Start:</td>
+						<td><form:input type="date" path="dateStart" /></td>
+						<td><form:errors path="dateStart" cssClass="fielderror"/></td>
+					</tr>
+					<tr id="estimatedDuration" style="display:none">
+						<td>Estimated Duration:</td>
+						<td><form:input type="number" path="estimatedDuraction" /></td>
+						<td><form:errors path="estimatedDuraction" cssClass="fielderror"/></td>
 					</tr>
 					<tr>
 			           <td>Picture:</td>
@@ -84,42 +150,53 @@
 			           <td><form:input type="file" path="video"/></td>
 			        </tr>
 			        <tr>
-						<td>Actors:</td>
+						<td>Directors:</td>
+				        <td> 
+					        <table id="tabla">
+								<thead>
+									<tr>
+										<th>First Name</th>
+										<th>Last Name</th>
+									</tr>
+								</thead>
+		
+								<tbody>
+									<c:forEach items="${contentDto.directors}" varStatus="status">
+										<tr >
+											<td><form:input type="text" class="nombre" path="directors[${status.index}].firstName" value="" /></td>
+											<td><form:input type="text" class="apellidos" path="directors[${status.index}].lastName" value="" /></td>
+										</tr>
+							 		</c:forEach>
+								</tbody>
+							</table>
+						</td>
 					</tr>
-			        <table id="tabla">
-					<!-- Cabecera de la tabla -->
-						<thead>
-							<tr>
-								<th>First Name</th>
-								<th>Last Name</th>
-								<th>&nbsp;</th>
-							</tr>
-						</thead>
-					 
-						<!-- Cuerpo de la tabla con los campos -->
-						<tbody>
-					 
-							<!-- fila base para clonar y agregar al final -->
-							<tr class="fila-base">
-								<td><input type="text" class="nombre" /></td>
-								<td><input type="text" class="apellidos" /></td>
-								<td class="eliminar">Remove</td>
-							</tr>
-							<!-- fin de código: fila base -->
-					 
-							<!-- Fila de ejemplo -->
-							<tr>
-								<td><input type="text" class="nombre" /></td>
-								<td><input type="text" class="apellidos" /></td>
-								<td class="eliminar">Eliminar</td>
-							</tr>
-							<!-- fin de código: fila de ejemplo -->
-					 
-						</tbody>
-					</table>
-					<!-- Botón para agregar filas -->
-					<input type="button" id="agregar" value="Add" />
-			        
+					<tr>
+						<td>Actors:</td>
+				        <td> 
+					        <table id="tabla2">
+								<thead>
+									<tr>
+										<th>First Name</th>
+										<th>Last Name</th>
+									</tr>
+								</thead>
+		
+								<tbody>
+									<c:forEach items="${contentDto.actors}" varStatus="status">
+										<tr >
+											<td><form:input type="text" class="nombre" path="actors[${status.index}].firstName" value="" /></td>
+											<td><form:input type="text" class="apellidos" path="actors[${status.index}].lastName" value="" /></td>
+										</tr>
+							 		</c:forEach>
+								</tbody>
+							</table>
+						</td>
+					</tr>
+					<tr>
+			           <td>Pay Per View(PPV):</td>
+			           <td><form:checkbox path="isPayPerView"/></td>
+			        </tr>        
 					<tr>
 						<td colspan="3"><input type="submit" value="Create" /></td>
 					</tr>
