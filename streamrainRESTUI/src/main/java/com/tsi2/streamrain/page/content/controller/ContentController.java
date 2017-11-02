@@ -56,7 +56,7 @@ public class ContentController {
 			String videoName = recordFile(contentDto.getVideo());
 			contentDto.setStorageUrl(videoName);
 			if ("1".equals(contentDto.getType())) {
-				contentDto.setType("Película");
+				contentDto.setType("Pelicula");
 				contentDto.setAlwaysAvailable(true);
 			}else if ("2".equals(contentDto.getType())) {
 				contentDto.setType("Serie");
@@ -65,7 +65,7 @@ public class ContentController {
 				contentDto.setType("Evento Deportivo");
 				contentDto.setAlwaysAvailable(false);
 			}else if ("4".equals(contentDto.getType())) {
-				contentDto.setType("Evento Espectáculo");
+				contentDto.setType("Evento Espectaculo");
 				contentDto.setAlwaysAvailable(false);
 			}
 			contentService.saveContent(contentDto, tenant);
@@ -100,10 +100,10 @@ public class ContentController {
 	@ModelAttribute("typeList")
 	public Map<Integer, String> populateTypeList() {
 		Map<Integer, String> types = new HashMap<>();
-		types.put(1,"Película");
+		types.put(1,"Pelicula");
 		types.put(2,"Serie");
 		types.put(3,"Evento Deportivo");
-		types.put(4,"Evento Espectáculo");
+		types.put(4,"Evento Espectaculo");
 		return types;
 	}
 	

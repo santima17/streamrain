@@ -32,12 +32,14 @@
 		<constructor-arg index="1" value="${twitter.consumer.secret}" />
 	</bean>
 
-	<bean id="generatorAuthenticationProvider"
-		class="com.tsi2.streamrain.security.authentication.providers.GeneratorAuthenticationProvider" />
-	
-	<bean id="administratorAuthenticationProvider"
-		class="com.tsi2.streamrain.security.authentication.providers.AdministratorAuthenticationProvider" />
-	
-	<bean id="userAuthenticationProvider"
-		class="com.tsi2.streamrain.security.authentication.providers.UserAuthenticationProvider" />
+	<bean id="generatorAuthenticationManager"
+		class="com.tsi2.streamrain.security.authentication.managers.GeneratorAuthenticationManager"/>
+
+	<bean id="administratorAuthenticationManager"
+		class="com.tsi2.streamrain.security.authentication.managers.AdministratorAuthenticationManager" />
+
+	<bean id="userAuthenticationManager"
+		class="com.tsi2.streamrain.security.authentication.managers.UserAuthenticationManager" />
+
+
 </beans>

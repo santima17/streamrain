@@ -16,7 +16,8 @@
 	</http>
 
 	<http use-expressions="true" auto-config="false"
-		authentication-manager-ref="administratorAuthenticationManager" pattern="/administrator/**">
+		authentication-manager-ref="administratorAuthenticationManager"
+		pattern="/administrator/**">
 		<http-basic />
 		<intercept-url pattern="/administrator/**" access="hasRole('ROLE_ADMINISTRATION')" />
 	</http>
@@ -28,13 +29,13 @@
 	</http>
 
 	<authentication-manager id="generatorAuthenticationManager">
-		<authentication-provider ref="generatorAuthenticationProvider" />
+		<authentication-provider ref="generatorAuthenticationProvider"/>
 	</authentication-manager>
 
 	<authentication-manager id="administratorAuthenticationManager">
-		<authentication-provider ref="administratorAuthenticationProvider" />
+		<authentication-provider user-service-ref="administratorAuthenticationProvider"/>
 	</authentication-manager>
-	
+
 	<authentication-manager id="userAuthenticationManager">
 		<authentication-provider ref="userAuthenticationProvider" />
 	</authentication-manager>
