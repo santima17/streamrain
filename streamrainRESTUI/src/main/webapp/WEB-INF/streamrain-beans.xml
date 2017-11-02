@@ -22,6 +22,9 @@
 
 	<bean id="tenantService"
 		class="com.tsi2.streamrain.services.tenants.implementations.TenantServiceImpl" />
+		
+	<bean id="contentService"
+		class="com.tsi2.streamrain.services.content.implementations.ContentServiceImpl" />
 
 	<bean id="connectionFactoryTwitter"
 		class="org.springframework.social.twitter.connect.TwitterConnectionFactory">

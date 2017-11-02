@@ -46,14 +46,6 @@
 				});
 			});
 
-			$('select[id=selectType]').change(function() {
-				alert("ggggggggggggg");
-		        var userType = $(this).val();
-		        alert(userType);
-		        //$('.description').hide();
-		        //$('#' + userType).show();
-		    });
-
 			$(function() {
 			    $('#selectType').change(function() {
 			        var x = $(this).val();
@@ -63,25 +55,25 @@
 			        	$('#duration').hide();
 			        	return;
 			        }
-			        if (x == 'Película'){
+			        if (x == '1'){
 			        	$('#dateStart').hide();
 			        	$('#estimatedDuration').hide();
 			        	$('#duration').show();
 			        	return;
 			        }
-		        	if (x == 'Serie'){
+		        	if (x == '2'){
 		        		$('#dateStart').hide();
 		        		$('#estimatedDuration').hide();
 		        		$('#duration').show();
 		        		return;
 		        	}
-		        	if (x == 'Evento Deportivo'){
+		        	if (x == '3'){
 		        		$('#duration').hide();
 		        		$('#dateStart').show();
 		        		$('#estimatedDuration').show();
 		        		return;
 		        	}
-		        	if (x == 'Evento Espectáculo'){
+		        	if (x == '4'){
 		        		$('#duration').hide();
 		        		$('#dateStart').show();
 		        		$('#estimatedDuration').show();

@@ -8,6 +8,6 @@
 	<bean id="userBussines" class="com.tsi2.streamrain.bussines.user.implementations.DAOUserBussinesImpl" />
 	<bean id="categoryBussines" class="com.tsi2.streamrain.bussines.category.implementations.DAOCategoryBussinesImpl" />
 	<bean id="tenantBussines" class="com.tsi2.streamrain.bussines.tenant.implementations.DAOTenantBussinesImpl" />
-
+	<bean id="contentBussines" class="com.tsi2.streamrain.bussines.content.implementations.DAOContentBussinesImpl" />
 
 </beans>

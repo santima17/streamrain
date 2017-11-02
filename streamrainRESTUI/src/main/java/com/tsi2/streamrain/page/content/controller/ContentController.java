@@ -5,27 +5,38 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.tsi2.streamrain.datatypes.content.ContentCastDto;
 import com.tsi2.streamrain.datatypes.content.ContentDto;
+import com.tsi2.streamrain.services.content.interfaces.IContentService;
 
 @Controller
 public class ContentController {
 	
 	@Value("${location.file.path}")
-	private String location; 
+	private String location;
+	
+	@Autowired
+	IContentService contentService;
 	
 	private static final String CONTENT_PREFIX = "/generator/content/";
 		
@@ -35,15 +46,29 @@ public class ContentController {
 	}
 	
 	@RequestMapping(value = "/{tenant}/portal/createContentProcess", method = RequestMethod.POST)
-    public String createContent(@Valid ContentDto contentDto, BindingResult result, Model model) {
-		if (result.hasErrors()) {
-			return CONTENT_PREFIX + "createContent";
-		}
+    public String createContent(@PathVariable("tenant") String tenant, @Valid ContentDto contentDto, BindingResult result, Model model) {
+		//if (result.hasErrors()) {
+		//	return CONTENT_PREFIX + "createContent";
+		//}
 		try {
 			String pictureName = recordFile(contentDto.getPicture());
 			contentDto.setCoverPictureUrl(pictureName);
 			String videoName = recordFile(contentDto.getVideo());
 			contentDto.setStorageUrl(videoName);
+			if ("1".equals(contentDto.getType())) {
+				contentDto.setType("Película");
+				contentDto.setAlwaysAvailable(true);
+			}else if ("2".equals(contentDto.getType())) {
+				contentDto.setType("Serie");
+				contentDto.setAlwaysAvailable(true);
+			}else if ("3".equals(contentDto.getType())) {
+				contentDto.setType("Evento Deportivo");
+				contentDto.setAlwaysAvailable(false);
+			}else if ("4".equals(contentDto.getType())) {
+				contentDto.setType("Evento Espectáculo");
+				contentDto.setAlwaysAvailable(false);
+			}
+			contentService.saveContent(contentDto, tenant);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "No se ha podido grabar el fichero";
@@ -73,12 +98,12 @@ public class ContentController {
 	}
 	
 	@ModelAttribute("typeList")
-	public List<String> populateTypeList() {
-		List<String> types = new ArrayList<>();
-		types.add("Película");
-		types.add("Serie");
-		types.add("Evento Deportivo");
-		types.add("Evento Espectáculo");
+	public Map<Integer, String> populateTypeList() {
+		Map<Integer, String> types = new HashMap<>();
+		types.put(1,"Película");
+		types.put(2,"Serie");
+		types.put(3,"Evento Deportivo");
+		types.put(4,"Evento Espectáculo");
 		return types;
 	}
 	
@@ -105,7 +130,8 @@ public class ContentController {
 		 actor5.setFirstName("");
 		 actor5.setLastName("");
 		 actor5.setIsActor(true);
-		 contentDto.setActors(Arrays.asList(actor,actor2, actor3, actor4, actor5));
+		 Set<ContentCastDto> actores = new HashSet<ContentCastDto>(Arrays.asList(actor,actor2, actor3, actor4, actor5));
+		 contentDto.setActors(actores);
 		 
 		 ContentCastDto director = new ContentCastDto();
 		 director.setFirstName("");
@@ -119,8 +145,9 @@ public class ContentController {
 		 director3.setFirstName("");
 		 director3.setLastName("");
 		 director3.setIsDirector(true);
-		 contentDto.setDirectors(Arrays.asList(director,director2, director3));
-		 
+		 Set<ContentCastDto> directores = new HashSet<ContentCastDto>(Arrays.asList(director,director2, director3));
+		 contentDto.setDirectors(directores);
+		 contentDto.setDateStart(new Date());
 	     return contentDto;
 	}
 

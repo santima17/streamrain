@@ -1,10 +1,8 @@
 package com.tsi2.streamrain.converters.user;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
-import com.tsi2.streamrain.model.generator.UserChatMessges;
 import com.tsi2.streamrain.model.generator.Users;
 import com.tsi2.streamrain.converters.interfaces.IConverter;
 import com.tsi2.streamrain.datatypes.user.UserDto;

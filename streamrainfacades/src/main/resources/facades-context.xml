@@ -12,4 +12,8 @@
 	
 	<bean id="tenantConverter" class="com.tsi2.streamrain.converters.tenant.TenantConverter" />
 	
+	<bean id="contentConverter" class="com.tsi2.streamrain.converters.content.ContentConverter" />
+	
+	<bean id="contentCastConverter" class="com.tsi2.streamrain.converters.content.ContentCastConverter" />
+	
 </beans>

@@ -1,7 +1,7 @@
 package com.tsi2.streamrain.datatypes.content;
 
 import java.util.Date;
-import java.util.List;
+import java.util.Set;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -11,12 +11,13 @@ public class ContentDto {
     private String name;
     private String description;
     private String type;
+    private Boolean alwaysAvailable;
     private Double ranking;
     private String coverPictureUrl;
     private String storageUrl;
     private Boolean isPayPerView;
-    private List<ContentCastDto> actors;
-    private List<ContentCastDto> directors;
+    private Set<ContentCastDto> actors;
+    private Set<ContentCastDto> directors;
     private MultipartFile picture;
     private MultipartFile video;
     private Integer duration;
@@ -83,18 +84,20 @@ public class ContentDto {
 	public void setVideo(MultipartFile video) {
 		this.video = video;
 	}
-	public List<ContentCastDto> getActors() {
+	
+	public Set<ContentCastDto> getActors() {
 		return actors;
 	}
-	public void setActors(List<ContentCastDto> actors) {
+	public void setActors(Set<ContentCastDto> actors) {
 		this.actors = actors;
 	}
-	public List<ContentCastDto> getDirectors() {
+	public Set<ContentCastDto> getDirectors() {
 		return directors;
 	}
-	public void setDirectors(List<ContentCastDto> directors) {
+	public void setDirectors(Set<ContentCastDto> directors) {
 		this.directors = directors;
 	}
+
 	public Integer getDuration() {
 		return duration;
 	}
@@ -113,5 +116,11 @@ public class ContentDto {
 	public void setEstimatedDuraction(Integer estimatedDuraction) {
 		this.estimatedDuraction = estimatedDuraction;
 	}
-					    
+	public Boolean getAlwaysAvailable() {
+		return alwaysAvailable;
+	}
+	public void setAlwaysAvailable(Boolean alwaysAvailable) {
+		this.alwaysAvailable = alwaysAvailable;
+	}
+						    
 }
